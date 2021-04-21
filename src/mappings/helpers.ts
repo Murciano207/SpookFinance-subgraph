@@ -25,24 +25,9 @@ export let ZERO_BD = BigDecimal.fromString('0')
 let network = dataSource.network()
 
 // Config for mainnet
-let WETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
-let USD = '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48'
-let DAI = '0x6b175474e89094c44da98b954eedeac495271d0f'
-let CRP_FACTORY = '0xed52D8E202401645eDAD1c0AA21e872498ce47D0'
-
-if (network == 'kovan') {
-  WETH = '0xd0a1e359811322d97991e03f863a0c30c2cf029c'
-  USD = '0x2f375e94fc336cdec2dc0ccb5277fe59cbf1cae5'
-  DAI = '0x1528f3fcc26d13f7079325fb78d9442607781c8c'
-  CRP_FACTORY = '0x53265f0e014995363AE54DAd7059c018BaDbcD74'
-}
-
-if (network == 'rinkeby') {
-  WETH = '0xc778417e063141139fce010982780140aa0cd5ab'
-  USD = '0x21f3179cadae46509f615428f639e38123a508ac'
-  DAI = '0x947b4082324af403047154f9f26f14538d775194'
-  CRP_FACTORY = '0xA3F9145CB0B50D907930840BB2dcfF4146df8Ab4'
-}
+let WBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'
+let USD = '0xe9e7cea3dedca5984780bafc599bd69add087d56'
+let CRP_FACTORY = '0x6d10B040339032B9761F97D29C428Ad6b6d86eaF'
 
 export function hexToDecimal(hexString: string, decimals: i32): BigDecimal {
   let bytes = Bytes.fromHexString(hexString).reverse() as Bytes
@@ -79,8 +64,6 @@ export function createPoolTokenEntity(id: string, pool: string, address: string)
   let name = ''
   let decimals = 18
 
-  // COMMENT THE LINES BELOW OUT FOR LOCAL DEV ON KOVAN
-
   let symbolCall = token.try_symbol()
   let nameCall = token.try_name()
   let decimalCall = token.try_decimals()
@@ -106,28 +89,6 @@ export function createPoolTokenEntity(id: string, pool: string, address: string)
   if (!decimalCall.reverted) {
     decimals = decimalCall.value
   }
-
-  // COMMENT THE LINES ABOVE OUT FOR LOCAL DEV ON KOVAN
-
-  // !!! COMMENT THE LINES BELOW OUT FOR NON-LOCAL DEPLOYMENT
-  // This code allows Symbols to be added when testing on local Kovan
-  /*
-  if(address == '0xd0a1e359811322d97991e03f863a0c30c2cf029c')
-    symbol = 'WETH';
-  else if(address == '0x1528f3fcc26d13f7079325fb78d9442607781c8c')
-    symbol = 'DAI'
-  else if(address == '0xef13c0c8abcaf5767160018d268f9697ae4f5375')
-    symbol = 'MKR'
-  else if(address == '0x2f375e94fc336cdec2dc0ccb5277fe59cbf1cae5')
-    symbol = 'USDC'
-  else if(address == '0x1f1f156e0317167c11aa412e3d1435ea29dc3cce')
-    symbol = 'BAT'
-  else if(address == '0x86436bce20258a6dcfe48c9512d4d49a30c4d8c4')
-    symbol = 'SNX'
-  else if(address == '0x8c9e6c40d3402480ace624730524facc5482798c')
-    symbol = 'REP'
-  */
-  // !!! COMMENT THE LINES ABOVE OUT FOR NON-LOCAL DEPLOYMENT
 
   let poolToken = new PoolToken(id)
   poolToken.poolId = pool
@@ -164,20 +125,12 @@ export function updatePoolLiquidity(id: string): void {
     poolLiquidity = usdPoolToken.balance.div(usdPoolToken.denormWeight).times(pool.totalWeight)
     hasPrice = true
     hasUsdPrice = true
-  } else if (tokensList.includes(Address.fromString(WETH))) {
-    let wethTokenPrice = TokenPrice.load(WETH)
-    if (wethTokenPrice !== null) {
-      let poolTokenId = id.concat('-').concat(WETH)
+  } else if (tokensList.includes(Address.fromString(WBNB))) {
+    let wbnbTokenPrice = TokenPrice.load(WBNB)
+    if (wbnbTokenPrice !== null) {
+      let poolTokenId = id.concat('-').concat(WBNB)
       let poolToken = PoolToken.load(poolTokenId)
-      poolLiquidity = wethTokenPrice.price.times(poolToken.balance).div(poolToken.denormWeight).times(pool.totalWeight)
-      hasPrice = true
-    }
-  } else if (tokensList.includes(Address.fromString(DAI))) {
-    let daiTokenPrice = TokenPrice.load(DAI)
-    if (daiTokenPrice !== null) {
-      let poolTokenId = id.concat('-').concat(DAI)
-      let poolToken = PoolToken.load(poolTokenId)
-      poolLiquidity = daiTokenPrice.price.times(poolToken.balance).div(poolToken.denormWeight).times(pool.totalWeight)
+      poolLiquidity = wbnbTokenPrice.price.times(poolToken.balance).div(poolToken.denormWeight).times(pool.totalWeight)
       hasPrice = true
     }
   }
@@ -201,7 +154,7 @@ export function updatePoolLiquidity(id: string): void {
         pool.active && !pool.crp && pool.tokensCount.notEqual(BigInt.fromI32(0)) && pool.publicSwap &&
         (tokenPrice.poolTokenId == poolTokenId || poolLiquidity.gt(tokenPrice.poolLiquidity)) &&
         (
-          (tokenPriceId != WETH.toString() && tokenPriceId != DAI.toString()) ||
+          (tokenPriceId != WBNB.toString()) ||
           (pool.tokensCount.equals(BigInt.fromI32(2)) && hasUsdPrice)
         )
       ) {

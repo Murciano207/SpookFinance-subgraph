@@ -15,10 +15,10 @@
       }, {
         "indexed": true,
         "internalType": "address",
-        "name": "blabs",
+        "name": "ystudio",
         "type": "address"
       }],
-      "name": "LOG_BLABS",
+      "name": "LOG_YSTUDIO",
       "type": "event"
     }, {
       "anonymous": false,
@@ -50,7 +50,7 @@
     }, {
       "constant": true,
       "inputs": [],
-      "name": "getBLabs",
+      "name": "getYStudio",
       "outputs": [{
         "internalType": "address",
         "name": "",
@@ -106,7 +106,7 @@
         "name": "b",
         "type": "address"
       }],
-      "name": "setBLabs",
+      "name": "setYStudio",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",

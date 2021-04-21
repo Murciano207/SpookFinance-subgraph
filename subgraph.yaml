@@ -1,16 +1,16 @@
-specVersion: 0.0.2
-description: Balancer is a non-custodial portfolio manager, liquidity provider, and price sensor.
-repository: https://github.com/balancer-labs/balancer-subgraph
+specVersion: 0.0.1
+description: .
+repository: https://github.com/yogi-fi/yogi-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Factory
-    network: mainnet
+    network: bsc
     source:
-      address: "0x9424B1412450D0f8Fc2255FAf6046b98213B76Bd"
+      address: "0x2Fab27B3B379b550AED296B7Fb48D7EfEAabda57"
       abi: Factory
-      startBlock: 9562480
+      startBlock: 6752080
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -31,7 +31,7 @@ dataSources:
 templates:
   - kind: ethereum/contract
     name: Pool
-    network: mainnet
+    network: bsc
     source:
       abi: Pool
     mapping:
@@ -80,12 +80,9 @@ templates:
           handler: handleSwap
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      callHandlers:
-        - function: gulp(address)
-          handler: handleGulp
   - kind: ethereum/contract
     name: CrpController
-    network: mainnet
+    network: bsc
     source:
       abi: ConfigurableRightsPool
     mapping:

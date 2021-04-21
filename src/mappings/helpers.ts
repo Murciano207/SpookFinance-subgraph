@@ -27,7 +27,7 @@ let network = dataSource.network()
 // Config for mainnet
 let WBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'
 let USD = '0xe9e7cea3dedca5984780bafc599bd69add087d56'
-let CRP_FACTORY = '0x6d10B040339032B9761F97D29C428Ad6b6d86eaF'
+let CRP_FACTORY = '0xad346F5c54De58A1B3404A10C98160d2a8951000'
 
 export function hexToDecimal(hexString: string, decimals: i32): BigDecimal {
   let bytes = Bytes.fromHexString(hexString).reverse() as Bytes

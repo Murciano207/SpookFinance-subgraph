@@ -1,5 +1,5 @@
 specVersion: 0.0.2
-description: .
+description: Portfolio manager, liquidity provider, exchange and more.
 repository: https://github.com/yogi-fi/yogi-subgraph
 schema:
   file: ./schema.graphql

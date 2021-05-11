@@ -6,8 +6,9 @@
     "codegen:matic": "graph codegen subgraphs/matic/subgraph.yaml",
     "build:bsc": "graph build subgraphs/bsc/subgraph.yaml",
     "build:matic": "graph build subgraphs/matic/subgraph.yaml",
-    "build": "graph build",
-    "deploy": "graph deploy --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --access-token ${GRAPH_TOKEN} yogi-fi/yogi-subgraph"
+    "deploy:bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ --access-token ${GRAPH_TOKEN} yogi-fi/bsc",
+    "deploy:matic": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ --access-token ${GRAPH_TOKEN} yogi-fi/matic",
+    "format": "prettier --write '*/**/*.{js,ts}'"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",

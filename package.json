@@ -6,8 +6,8 @@
     "codegen:matic": "graph codegen subgraphs/matic/subgraph.yaml",
     "build:bsc": "graph build subgraphs/bsc/subgraph.yaml",
     "build:matic": "graph build subgraphs/matic/subgraph.yaml",
-    "deploy:bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ --access-token ${GRAPH_TOKEN} yogi-fi/bsc",
-    "deploy:matic": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ --access-token ${GRAPH_TOKEN} yogi-fi/matic",
+    "deploy:bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ yogi-fi/bsc subgraphs/bsc/subgraph.yaml",
+    "deploy:matic": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ yogi-fi/matic subgraphs/matic/subgraph.yaml",
     "format": "prettier --write '*/**/*.{js,ts}'"
   },
   "devDependencies": {

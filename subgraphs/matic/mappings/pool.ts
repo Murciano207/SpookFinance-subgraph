@@ -5,7 +5,7 @@ import {
   LOG_EXIT,
   LOG_SWAP,
   Transfer
-} from "../../../src/types/templates/Pool/Pool";
+} from "../../../generated/templates/Pool/Pool";
 import {
   Balancer,
   Pool,
@@ -13,7 +13,7 @@ import {
   PoolShare,
   Swap,
   TokenPrice
-} from "../../../src/types/schema";
+} from "../../../generated/schema";
 import {
   hexToDecimal,
   tokenToDecimal,
@@ -28,7 +28,7 @@ import {
 import {
   ConfigurableRightsPool,
   OwnershipTransferred
-} from "../../../src/types/Factory/ConfigurableRightsPool";
+} from "../../../generated/Factory/ConfigurableRightsPool";
 
 /************************************
  ********** Pool Controls ***********

@@ -14,11 +14,11 @@ import {
   TokenPrice,
   Transaction,
   Balancer
-} from "../../../src/types/schema";
-import { BTokenBytes } from "../../../src/types/templates/Pool/BTokenBytes";
-import { BToken } from "../../../src/types/templates/Pool/BToken";
-import { CRPFactory } from "../../../src/types/Factory/CRPFactory";
-import { ConfigurableRightsPool } from "../../../src/types/Factory/ConfigurableRightsPool";
+} from "../../../generated/schema";
+import { BTokenBytes } from "../../../generated/templates/Pool/BTokenBytes";
+import { BToken } from "../../../generated/templates/Pool/BToken";
+import { CRPFactory } from "../../../generated/Factory/CRPFactory";
+import { ConfigurableRightsPool } from "../../../generated/Factory/ConfigurableRightsPool";
 
 export let ZERO_BD = BigDecimal.fromString("0");
 

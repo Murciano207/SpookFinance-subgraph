@@ -8,7 +8,12 @@
     "build:polygon": "graph build subgraphs/polygon/subgraph.yaml",
     "deploy:bsc": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ yogi-fi/bsc subgraphs/bsc/subgraph.yaml",
     "deploy:polygon": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ yogi-fi/polygon subgraphs/polygon/subgraph.yaml",
-    "format": "prettier --write '*/**/*.{js,ts}'"
+
+    "format": "prettier --write '*/**/*.{js,ts}'",
+    "clean": "rm -r generated",
+
+    "bsc": "yarn clean && yarn codegen:bsc && yarn build:bsc && yarn deploy:bsc",
+    "polygon": "yarn clean && yarn codegen:polygon && yarn build:polygon && yarn deploy:polygon"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",

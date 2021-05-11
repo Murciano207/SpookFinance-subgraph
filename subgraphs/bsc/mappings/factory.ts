@@ -1,7 +1,7 @@
 import { Address, BigInt, BigDecimal } from '@graphprotocol/graph-ts'
-import { LOG_NEW_POOL } from '../types/Factory/Factory'
-import { Balancer, Pool } from '../types/schema'
-import { Pool as PoolContract, CrpController as CrpControllerContract } from '../types/templates'
+import { LOG_NEW_POOL } from '../../../src/types/Factory/Factory'
+import { Balancer, Pool } from '../../../src/types/schema'
+import { Pool as PoolContract, CrpController as CrpControllerContract } from '../../../src/types/templates'
 import {
   ZERO_BD,
   isCrp,
@@ -11,7 +11,7 @@ import {
   getCrpRights,
   getCrpCap
 } from './helpers'
-import { ConfigurableRightsPool } from '../types/Factory/ConfigurableRightsPool';
+import { ConfigurableRightsPool } from '../../../src/types/Factory/ConfigurableRightsPool';
 
 export function handleNewPool(event: LOG_NEW_POOL): void {
   let factory = Balancer.load('1')

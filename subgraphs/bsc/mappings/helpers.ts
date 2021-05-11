@@ -14,18 +14,18 @@ import {
   TokenPrice,
   Transaction,
   Balancer
-} from '../types/schema'
-import { BTokenBytes } from '../types/templates/Pool/BTokenBytes'
-import { BToken } from '../types/templates/Pool/BToken'
-import { CRPFactory } from '../types/Factory/CRPFactory'
-import { ConfigurableRightsPool } from '../types/Factory/ConfigurableRightsPool'
+} from '../../../src/types/schema'
+import { BTokenBytes } from '../../../src/types/templates/Pool/BTokenBytes'
+import { BToken } from '../../../src/types/templates/Pool/BToken'
+import { CRPFactory } from '../../../src/types/Factory/CRPFactory'
+import { ConfigurableRightsPool } from '../../../src/types/Factory/ConfigurableRightsPool'
 
 export let ZERO_BD = BigDecimal.fromString('0')
 
 let network = dataSource.network()
 
 // Config for mainnet
-let WBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'
+let WNATIVE = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c'
 let USD = '0xe9e7cea3dedca5984780bafc599bd69add087d56'
 let CRP_FACTORY = '0xad346F5c54De58A1B3404A10C98160d2a8951000'
 
@@ -125,12 +125,12 @@ export function updatePoolLiquidity(id: string): void {
     poolLiquidity = usdPoolToken.balance.div(usdPoolToken.denormWeight).times(pool.totalWeight)
     hasPrice = true
     hasUsdPrice = true
-  } else if (tokensList.includes(Address.fromString(WBNB))) {
-    let wbnbTokenPrice = TokenPrice.load(WBNB)
-    if (wbnbTokenPrice !== null) {
-      let poolTokenId = id.concat('-').concat(WBNB)
+  } else if (tokensList.includes(Address.fromString(WNATIVE))) {
+    let wnativeTokenPrice = TokenPrice.load(WNATIVE)
+    if (wnativeTokenPrice !== null) {
+      let poolTokenId = id.concat('-').concat(WNATIVE)
       let poolToken = PoolToken.load(poolTokenId)
-      poolLiquidity = wbnbTokenPrice.price.times(poolToken.balance).div(poolToken.denormWeight).times(pool.totalWeight)
+      poolLiquidity = wnativeTokenPrice.price.times(poolToken.balance).div(poolToken.denormWeight).times(pool.totalWeight)
       hasPrice = true
     }
   }
@@ -154,7 +154,7 @@ export function updatePoolLiquidity(id: string): void {
         pool.active && !pool.crp && pool.tokensCount.notEqual(BigInt.fromI32(0)) && pool.publicSwap &&
         (tokenPrice.poolTokenId == poolTokenId || poolLiquidity.gt(tokenPrice.poolLiquidity)) &&
         (
-          (tokenPriceId != WBNB.toString()) ||
+          (tokenPriceId != WNATIVE.toString()) ||
           (pool.tokensCount.equals(BigInt.fromI32(2)) && hasUsdPrice)
         )
       ) {

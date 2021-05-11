@@ -1,5 +1,5 @@
 import { BigInt, Address, Bytes, store } from '@graphprotocol/graph-ts'
-import { LOG_CALL, LOG_JOIN, LOG_EXIT, LOG_SWAP, Transfer } from '../types/templates/Pool/Pool'
+import { LOG_CALL, LOG_JOIN, LOG_EXIT, LOG_SWAP, Transfer } from '../../../src/types/templates/Pool/Pool'
 import {
   Balancer,
   Pool,
@@ -7,7 +7,7 @@ import {
   PoolShare,
   Swap,
   TokenPrice
-} from '../types/schema'
+} from '../../../src/types/schema'
 import {
   hexToDecimal,
   tokenToDecimal,
@@ -19,7 +19,7 @@ import {
   ZERO_BD,
   decrPoolCount
 } from './helpers'
-import { ConfigurableRightsPool, OwnershipTransferred } from '../types/Factory/ConfigurableRightsPool'
+import { ConfigurableRightsPool, OwnershipTransferred } from '../../../src/types/Factory/ConfigurableRightsPool'
 
 /************************************
  ********** Pool Controls ***********

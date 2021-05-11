@@ -1,6 +1,4 @@
-{
-  "contractName": "BPool",
-  "abi": [
+[
   {
     "inputs": [],
     "payable": false,
@@ -1598,5 +1596,5 @@
     "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
-  }]
-}
+  }
+]

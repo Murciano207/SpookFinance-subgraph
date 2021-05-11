@@ -1,115 +1,142 @@
-{
-  "contractName": "BFactory",
-  "abi": [{
-      "inputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    }, {
-      "anonymous": false,
-      "inputs": [{
+[
+  {
+    "inputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "caller",
         "type": "address"
-      }, {
+      },
+      {
         "indexed": true,
         "internalType": "address",
         "name": "ystudio",
         "type": "address"
-      }],
-      "name": "LOG_YSTUDIO",
-      "type": "event"
-    }, {
-      "anonymous": false,
-      "inputs": [{
+      }
+    ],
+    "name": "LOG_YSTUDIO",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": true,
         "internalType": "address",
         "name": "caller",
         "type": "address"
-      }, {
+      },
+      {
         "indexed": true,
         "internalType": "address",
         "name": "pool",
         "type": "address"
-      }],
-      "name": "LOG_NEW_POOL",
-      "type": "event"
-    }, {
-      "constant": false,
-      "inputs": [{
+      }
+    ],
+    "name": "LOG_NEW_POOL",
+    "type": "event"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
         "internalType": "contract BPool",
         "name": "pool",
         "type": "address"
-      }],
-      "name": "collect",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }, {
-      "constant": true,
-      "inputs": [],
-      "name": "getYStudio",
-      "outputs": [{
+      }
+    ],
+    "name": "collect",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getYStudio",
+    "outputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
-      }],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    }, {
-      "constant": true,
-      "inputs": [],
-      "name": "getColor",
-      "outputs": [{
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "getColor",
+    "outputs": [
+      {
         "internalType": "bytes32",
         "name": "",
         "type": "bytes32"
-      }],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    }, {
-      "constant": true,
-      "inputs": [{
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
+      {
         "internalType": "address",
         "name": "b",
         "type": "address"
-      }],
-      "name": "isBPool",
-      "outputs": [{
+      }
+    ],
+    "name": "isBPool",
+    "outputs": [
+      {
         "internalType": "bool",
         "name": "",
         "type": "bool"
-      }],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    }, {
-      "constant": false,
-      "inputs": [],
-      "name": "newBPool",
-      "outputs": [{
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "newBPool",
+    "outputs": [
+      {
         "internalType": "contract BPool",
         "name": "",
         "type": "address"
-      }],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }, {
-      "constant": false,
-      "inputs": [{
+      }
+    ],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
         "internalType": "address",
         "name": "b",
         "type": "address"
-      }],
-      "name": "setYStudio",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }]
-}
+      }
+    ],
+    "name": "setYStudio",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

@@ -45,11 +45,11 @@ templates:
         - Swap
       abis:
         - name: Pool
-          file: ./abis/BPool.json
+          file: ../../abis/BPool.json
         - name: BToken
-          file: ./abis/BToken.json
+          file: ../../abis/BToken.json
         - name: BTokenBytes
-          file: ./abis/BTokenBytes32.json
+          file: ../../abis/BTokenBytes32.json
       eventHandlers:
         - event: LOG_CALL(indexed bytes4,indexed address,bytes)
           topic0: "0x34e1990700000000000000000000000000000000000000000000000000000000"
@@ -89,12 +89,12 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.4
       language: wasm/assemblyscript
-      file: ./src/mappings/pool.ts
+      file: ./mappings/pool.ts
       entities:
         - Pool
       abis:
         - name: ConfigurableRightsPool
-          file: ./abis/ConfigurableRightsPool.json
+          file: ../../abis/ConfigurableRightsPool.json
       eventHandlers:
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleSetCrpController

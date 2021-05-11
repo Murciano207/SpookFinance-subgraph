@@ -1,8 +1,11 @@
 {
   "name": "yogi-subgraph",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "scripts": {
-    "codegen": "graph codegen --output-dir src/types/",
+    "codegen:bsc": "graph codegen subgraphs/bsc/subgraph.yaml",
+    "codegen:matic": "graph codegen subgraphs/matic/subgraph.yaml",
+    "build:bsc": "graph build subgraphs/bsc/subgraph.yaml",
+    "build:matic": "graph build subgraphs/matic/subgraph.yaml",
     "build": "graph build",
     "deploy": "graph deploy --debug --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --access-token ${GRAPH_TOKEN} yogi-fi/yogi-subgraph"
   },

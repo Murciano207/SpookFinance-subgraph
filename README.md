@@ -1,4 +1,4 @@
-# Balancer Subgraph
+# Yogi Subgraph
 
 The graphql schema is still under heavy development and will likely have major breaking changes.
 
@@ -47,14 +47,14 @@ docker-compose kill && docker-compose rm -f && rm -rf data
 
 ### Contracts
 
-Deploy balancer contracts using truffle. Using the `yarn deploy` script in balancer-dapp also makes this easy to test out the subgraph using the frontend.
+Deploy yogi contracts using truffle. Using the `yarn deploy` script in yogi-frontend also makes this easy to test out the subgraph using the frontend.
 
 ### Subgraph
 
-Clone the balancer subgraph
+Clone the yogi subgraph
 
 ```
-git clone git@github.com:balancer-labs/balancer-subgraph.git
+git clone git@github.com:yogi-fi/yogi-subgraph.git
 ```
 
 Update factory address in subgraph.yaml to the one listed as part of the deploy
@@ -85,48 +85,9 @@ yarn deploy:local
 
 Any updates can be made to this repo and re-running `yarn deploy:local` without needing to re-initialize the environment.
 
-## Running Locally With Parity Kovan Node
-
-Start Parity:
-
-```
-parity --chain=kovan --jsonrpc-interface=0.0.0.0
-```
-
-Update ethereum value in docker-compose.yml to `kovan:http://host.docker.internal:8545`
-
-Comment out try_ functions in pool.ts LN52-64
-
-```
-cd graph-node/docker
-```
-
-```
-docker-compose up
-```
-
-Create local node
-
-```
-yarn create:local
-```
-
-Deploy locally
-
-```
-yarn deploy:local
-```
-
-To blow away graph-node settings
-
-```
-docker-compose kill && docker-compose rm -f && rm -rf data
-```
-
-
 ## Queries
 
-GraphiQL interface can be accessed on a dev env at: http://127.0.0.1:8000/subgraphs/name/balancer-labs/balancer-subgraph
+GraphiQL interface can be accessed on a dev env at: http://127.0.0.1:8000/subgraphs/name/yogi-fi/yogi-subgraph
 
 **List of pools**
 ```GraphQL
